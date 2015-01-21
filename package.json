@@ -2,12 +2,12 @@
   "name": "ember-cli-defeatureify",
   "version": "0.1.0",
   "main": "index.js",
-  "description": "Ember-CLI addon to defeatureify your app",
+  "description": "Ember-CLI addon to defeatureify your apps",
   "repository": "",
   "author": "Jesper Haug Karsrud",
   "license": "MIT",
   "dependencies": {
-    "broccoli-defeatureify": "1.0.0",
+    "broccoli-defeatureify": "1.0.0"
   },
   "keywords": [
     "ember-addon"

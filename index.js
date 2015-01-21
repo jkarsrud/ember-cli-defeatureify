@@ -4,16 +4,16 @@
 module.exports = {
   name: 'ember-cli-defeatureify',
   included: function(app) {
-    console.log('Included defeatureify plugin');
     this._super.included.apply(this, arguments);
 
     var options = getOptions(app, app.options['defeatureify']);
 
     var plugin = {
-      name: 'defeatureify',
+      name: 'ember-cli-defeatureify',
       ext: 'js',
       toTree: function(tree) {
-        return require('broccoli-defeatureify')(tree, options);
+        console.log(tree);
+        return require('broccoli-defeatureify')(app.trees.app, options);
       }
     };
 
