@@ -12,8 +12,7 @@ module.exports = {
       name: 'ember-cli-defeatureify',
       ext: 'js',
       toTree: function(tree) {
-        console.log(tree);
-        return require('broccoli-defeatureify')(app.trees.app, options);
+        return require('broccoli-defeatureify')(tree, options);
       }
     };
 
