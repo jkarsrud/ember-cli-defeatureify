@@ -12,7 +12,7 @@
   "keywords": [
     "ember-addon"
   ],
-  "ember-cli-defeatureify": {
+  "ember-addon": {
     "after": [
       "ember-cli-6to5"
     ]
