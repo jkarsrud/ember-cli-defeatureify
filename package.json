@@ -13,8 +13,8 @@
     "ember-addon"
   ],
   "ember-addon": {
-    "after": [
-      "ember-cli-6to5"
+    "before": [
+      "ember-cli-uglify"
     ]
   }
 }
