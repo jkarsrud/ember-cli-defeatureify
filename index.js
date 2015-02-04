@@ -2,6 +2,7 @@
 'use strict';
 
 var defeatureify = require('broccoli-defeatureify');
+var insertContent = require('./lib/insert-features');
 
 module.exports = {
   name: 'ember-cli-defeatureify',
@@ -9,6 +10,12 @@ module.exports = {
     this._super.included.apply(this, arguments);
     this.app = app;
     this.options = getOptions(app, app.options['defeatureify']);
+  },
+  contentFor: function(type, config) {
+    if(this.app.env === 'development' && type === 'head') {
+      return insertContent(this.options);
+    }
+    return '';
   },
   postprocessTree: function(type, tree) {
     if(this.app.env === 'production' && type === 'all') {
