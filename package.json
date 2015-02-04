@@ -6,6 +6,9 @@
   "repository": "",
   "author": "Jesper Haug Karsrud",
   "license": "MIT",
+  "scripts": {
+    "test": "node_modules/.bin/nodeunit tests"
+  },
   "dependencies": {
     "broccoli-defeatureify": "1.0.0"
   },
@@ -16,5 +19,8 @@
     "before": [
       "ember-cli-uglify"
     ]
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.0"
   }
 }
