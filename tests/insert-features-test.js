@@ -1,7 +1,7 @@
 var insertFeatures = require('../lib/insert-features');
 
 exports.testInsertFeaturesWithOneFeature = function(test) {
-  var expected = '<script>TEST = {};TEST.FEATURES = {"test":true};TEST.FEATURES.isEnabled = function(feature) {return this[feature];};</script>';
+  var expected = 'TEST = {};TEST.FEATURES = {"test":true};TEST.FEATURES.isEnabled = function(feature) {return this[feature];};';
   var options = {
     namespace: 'TEST',
     features: {
@@ -16,7 +16,7 @@ exports.testInsertFeaturesWithOneFeature = function(test) {
 };
 
 exports.testInsertFeaturesWithMultipleFeatures = function(test) {
-  var expected = '<script>TEST = {};TEST.FEATURES = {"test":true,"anotherFeature":false};TEST.FEATURES.isEnabled = function(feature) {return this[feature];};</script>';
+  var expected = 'TEST = {};TEST.FEATURES = {"test":true,"anotherFeature":false};TEST.FEATURES.isEnabled = function(feature) {return this[feature];};';
   var options = {
     namespace: 'TEST',
     features: {
