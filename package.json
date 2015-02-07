@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "description": "Ember-CLI addon to defeatureify your apps",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkarsrud/ember-cli-defeatureify.git"
+  },
   "author": "Jesper Haug Karsrud",
   "license": "MIT",
   "scripts": {
