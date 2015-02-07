@@ -1,25 +1,31 @@
 # Ember-cli-defeatureify
 
-This README outlines the details of collaborating on this Ember addon.
+Addon for Ember-CLI that allows you to [defeatureify](https://github.com/thomasboyt/defeatureify) your code when building for production.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```bash
+ember install:addon ember-cli-defeatureify
+```
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+Specify features in your project's `Brocfile.js`:
 
-## Running Tests
+```js
+var app = new EmberApp({
+  defeatureify: {
+    features: {
+      "propertyBraceExpansion": true,
+      "ember-metal-run-bind": true,
+      "with-controller": true,
+      "query-params-new": false,
+      "string-humanize": false
+    }
+  }
+})
+```
 
-* `ember test`
-* `ember test --server`
+## Options
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+See the [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) options.
