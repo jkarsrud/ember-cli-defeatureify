@@ -15,6 +15,7 @@ Specify features in your project's `Brocfile.js`:
 ```js
 var app = new EmberApp({
   defeatureify: {
+    namespace: 'mynamespace',
     features: {
       "propertyBraceExpansion": true,
       "ember-metal-run-bind": true,
@@ -26,6 +27,21 @@ var app = new EmberApp({
 })
 ```
 
+When building in `development`, these features will be inlined in `my-app.js`, while they're only used for defeatureifying your code when building in `production`. The features are available to you in your application code under `mynamespace.FEATURES`.
+
+To use the feature flags, you would wrap the code you want to enable like this:
+
+```js
+if(mynamespace.FEATURES.isEnabled('propertyBraceExpansion')) {
+  // Your code here
+} else {
+  // What to do if feature is disabled
+}
+```
+
 ## Options
 
-See the [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) options.
+### options.namespace
+Namespace defaults to your application name from `package.json`
+
+See [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) for more documentation of options.
