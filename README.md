@@ -1,4 +1,4 @@
-# ember-cli-defeatureify [![Build Status](https://travis-ci.org/jkarsrud/ember-cli-defeatureify.png)](https://travis-ci.org/jkarsrud/ember-cli-defeatureify)
+# ember-cli-defeatureify [![Build Status](https://travis-ci.org/jkarsrud/ember-cli-defeatureify.svg)](https://travis-ci.org/jkarsrud/ember-cli-defeatureify)
 
 Addon for Ember-CLI that allows you to [defeatureify](https://github.com/thomasboyt/defeatureify) your code when building for production.
 
