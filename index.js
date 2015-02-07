@@ -12,7 +12,7 @@ module.exports = {
     this.options = getOptions(app, app.options['defeatureify']);
   },
   contentFor: function(type, config) {
-    if(this.app.env === 'development' && type === 'app') {
+    if(this.app.env === 'development' && type === 'app-prefix') {
       return insertContent(this.options);
     }
     return '';
