@@ -1,4 +1,6 @@
-# ember-cli-defeatureify [![Build Status](https://travis-ci.org/jkarsrud/ember-cli-defeatureify.svg)](https://travis-ci.org/jkarsrud/ember-cli-defeatureify)
+# ember-cli-defeatureify
+
+[![Build Status](https://travis-ci.org/jkarsrud/ember-cli-defeatureify.svg)](https://travis-ci.org/jkarsrud/ember-cli-defeatureify)
 
 Addon for Ember-CLI that allows you to [defeatureify](https://github.com/thomasboyt/defeatureify) your code when building for production.
 
@@ -38,6 +40,8 @@ if(mynamespace.FEATURES.isEnabled('propertyBraceExpansion')) {
   // What to do if feature is disabled
 }
 ```
+
+**Note:** If you want to remove Ember debug statements, you will need to use `Ember.default` instead of just `Ember` in the `debugStatements` list.
 
 ## Options
 
