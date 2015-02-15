@@ -3,9 +3,13 @@
 
 var defeatureify = require('broccoli-defeatureify');
 var insertContent = require('./lib/insert-features');
+var checker = require('ember-cli-version-checker');
 
 module.exports = {
   name: 'ember-cli-defeatureify',
+  init: function() {
+    checker.assertAbove(this, '0.1.15');
+  },
   included: function(app) {
     this._super.included.apply(this, arguments);
     this.app = app;

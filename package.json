@@ -13,7 +13,8 @@
     "test": "node_modules/.bin/nodeunit tests"
   },
   "dependencies": {
-    "broccoli-defeatureify": "1.0.0"
+    "broccoli-defeatureify": "1.0.0",
+    "ember-cli-version-checker": "^1.0.1"
   },
   "keywords": [
     "ember-addon"
