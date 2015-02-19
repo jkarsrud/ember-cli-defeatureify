@@ -4,6 +4,7 @@
 var defeatureify = require('broccoli-defeatureify');
 var insertContent = require('./lib/insert-features');
 var checker = require('ember-cli-version-checker');
+var camelize = require('./lib/camelize');
 
 module.exports = {
   name: 'ember-cli-defeatureify',
@@ -34,6 +35,10 @@ function getOptions(app, options) {
 
   if(!options.namespace) {
     options.namespace = app.name;
+  }
+
+  if(options.namespace) {
+    options.namespace = camelize(options.namespace);
   }
 
   if(!options.features) {
