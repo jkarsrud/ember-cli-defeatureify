@@ -1,0 +1,30 @@
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf true
+
+# Test against these versions of Node.js.
+environment:
+  matrix:
+    # node.js
+    - nodejs_version: "0.10"
+    #io.js
+    - nodejs_version: "1.0"
+
+# Install scripts. (runs after repo cloning)
+install:
+  # Get the latest stable version of Node 0.STABLE.latest
+  - ps: Install-Product node $env:nodejs_version
+  - "npm config set spin false"
+  - "npm install -g npm@^2"
+  - "npm install"
+
+# Post-install test scripts.
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
