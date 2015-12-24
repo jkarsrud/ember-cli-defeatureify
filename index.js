@@ -16,7 +16,7 @@ module.exports = {
   },
   contentFor: function(type, config) {
     if (type === 'head') {
-      return '<meta name="ember-cli-defeatureify/config" data-module="true" content="' + escape(JSON.stringify(this.options.features)) + '" />';  
+      return '<meta name="ember-cli-defeatureify/config" data-module="true" content="' + escape(JSON.stringify(this.options.features)) + '" />';
     }
   },
   postprocessTree: function(type, tree) {

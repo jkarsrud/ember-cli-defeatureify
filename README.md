@@ -56,3 +56,9 @@ if(FEATURES.isEnabled('propertyBraceExpansion')) {
 ## Options
 
 See [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) for documentation of options.
+
+## Running Tests
+
+* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
+* `ember test`
+* `ember test --server`
