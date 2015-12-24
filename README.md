@@ -2,22 +2,28 @@
 
 [![Travis Build Status](https://travis-ci.org/jkarsrud/ember-cli-defeatureify.svg)](https://travis-ci.org/jkarsrud/ember-cli-defeatureify) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jkarsrud/ember-cli-defeatureify?svg=true)](https://ci.appveyor.com/project/jkarsrud/ember-cli-defeatureify)
 
-Addon for Ember-CLI that allows you to [defeatureify](https://github.com/thomasboyt/defeatureify) your code when building for production.
+Addon for Ember CLI that allows you to [defeatureify](https://github.com/thomasboyt/defeatureify) your code when building for production.
 
 ## Installation
 
 ```bash
-ember install:addon ember-cli-defeatureify
+ember install ember-cli-defeatureify
 ```
+
+## Upgrading to 2.X
+
+2.X removed the specifiable namespace in favor of modularized inclusion. You will need to:
+
+* remove the namespace from each `FEATURES` definition.
+* include the module in each place that needs feature flags: `import { FEATURES } from 'ember-cli-defeatureify/FEATURES';`
 
 ## Usage
 
-Specify features in your project's `Brocfile.js`:
+Specify features in your project's `ember-cli-build.js`:
 
 ```js
 var app = new EmberApp({
   defeatureify: {
-    namespace: 'myNamespace',
     features: {
       "propertyBraceExpansion": true,
       "ember-metal-run-bind": true,
@@ -29,12 +35,16 @@ var app = new EmberApp({
 })
 ```
 
-When building in `development`, these features will be inlined in `my-app.js`, while they're only used for defeatureifying your code when building in `production`. The features are available to you in your application code under `myNamespace.FEATURES`.
+When building in `development` all feature toggles will remain in the codebase. When building for `prod` it will trigger defeatureifying your code and remove anything behind a feature flag. The feature settings are available to you in your application code under `FEATURES` after importing the module like so:
+
+```js
+import { FEATURES } from 'ember-cli-defeatureify/FEATURES';
+```
 
 To use the feature flags, you would wrap the code you want to enable like this:
 
 ```js
-if(myNamespace.FEATURES.isEnabled('propertyBraceExpansion')) {
+if(FEATURES.isEnabled('propertyBraceExpansion')) {
   // Your code here
 } else {
   // What to do if feature is disabled
@@ -45,16 +55,4 @@ if(myNamespace.FEATURES.isEnabled('propertyBraceExpansion')) {
 
 ## Options
 
-### options.namespace
-Namespace defaults to your application name from `package.json`, but you can specify your own through the `namespace` option.
-
-The namespace is `camelized` if it contains dashes, underscores or spaces to make sure it's valid JavaScript and parseable by `defeatureify`.
-
-**Example**:
-```js
-'my-app-namespace'  // myAppNamespace
-'app_namespace'     // appNamespace
-'awesome namespace' // awesomeNamespace
-```
-
-See [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) for more documentation of options.
+See [grunt-ember-defeatureify](https://github.com/craigteegarden/grunt-ember-defeatureify#options) for documentation of options.

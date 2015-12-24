@@ -2,14 +2,12 @@
 'use strict';
 
 var defeatureify = require('broccoli-defeatureify');
-var insertContent = require('./lib/insert-features');
 var checker = require('ember-cli-version-checker');
-var camelize = require('./lib/camelize');
 
 module.exports = {
   name: 'ember-cli-defeatureify',
   init: function() {
-    checker.assertAbove(this, '0.1.15');
+    checker.assertAbove(this, '2.2.0');
   },
   included: function(app) {
     this._super.included.apply(this, arguments);
@@ -17,10 +15,9 @@ module.exports = {
     this.options = getOptions(app, app.options['defeatureify']);
   },
   contentFor: function(type, config) {
-    if(this.app.env !== 'production' && type === 'app-prefix') {
-      return insertContent(this.options);
+    if (type === 'head') {
+      return '<meta name="ember-cli-defeatureify/config" data-module="true" content="' + escape(JSON.stringify(this.options.features)) + '" />';  
     }
-    return '';
   },
   postprocessTree: function(type, tree) {
     if(this.app.env === 'production' && type === 'all') {
@@ -32,14 +29,7 @@ module.exports = {
 
 function getOptions(app, options) {
   options = options || {};
-
-  if(!options.namespace) {
-    options.namespace = app.name;
-  }
-
-  if(options.namespace) {
-    options.namespace = camelize(options.namespace);
-  }
+  options.namespace = options.namespace || '_emberCliDefeatureifyFEATURES';
 
   if(!options.features) {
     throw new Error("Features are not specified");
